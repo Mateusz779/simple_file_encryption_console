@@ -1,6 +1,5 @@
-//@author: Mateusz779
+﻿//@author: Mateusz779
 using Mono.Options;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +28,7 @@ namespace encryption_console
        v => dest=v },
     { "m|mode=",
        "0 to encrypt 1 to decrypt" +
-          "this must be an integer.",
+          "\nthis must be an integer.",
         (int v) => mode = v },
     { "p|pass=", "Password",
        v => passs.Add(v) },
@@ -50,11 +49,20 @@ namespace encryption_console
                 Console.WriteLine("Try `greet --help' for more information.");
                 return;
             }
+            if (show_help)
+            {
+                for (int i = 0; i < p.Count; i++)
+                    Console.WriteLine(p[i].Prototype+ "    "+ p[i].Description);
+                return;
+            }
+                
+
             while (string.IsNullOrWhiteSpace(source))
             {
                 Console.WriteLine("Location source file:");
                 source = Console.ReadLine();
             }
+
             while (mode == -1)
             {
                 Console.WriteLine("0 to encrypt 1 to decrypt:");
