@@ -1,4 +1,5 @@
-﻿using Mono.Options;
+//@author: Mateusz779
+using Mono.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -54,12 +55,6 @@ namespace encryption_console
                 Console.WriteLine("Location source file:");
                 source = Console.ReadLine();
             }
-            //while (string.IsNullOrWhiteSpace(dest))
-            //{
-            //    Console.WriteLine("Destination of file:");
-            //    dest = Console.ReadLine();
-            //}
-
             while (mode == -1)
             {
                 Console.WriteLine("0 to encrypt 1 to decrypt:");
@@ -275,7 +270,6 @@ namespace encryption_console
                     passwordBytes = System.Text.Encoding.ASCII.GetBytes(tempp[1]);
                 else
                 {
-                    //MessageBox.Show("Incorrect password!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Console.WriteLine("Incorrect password!");
                     passwordBytes = null;
                 }
@@ -283,7 +277,6 @@ namespace encryption_console
             }
             catch
             {
-                //MessageBox.Show("Selected corrupted or invaild file!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("Selected corrupted or invaild file!");
             }
             if (passwordBytes != null && passwordBytes.Length != 0)
@@ -340,62 +333,9 @@ namespace encryption_console
                 {
                     fsOut.Close();
                     fsCrypt.Close();
-                    //MessageBox.Show("File has decrypted!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Console.WriteLine("File has decrypted!");
                 }
             }
         }
-
-        //private void encrypt_Click(object sender, EventArgs e)
-        //{
-        //    OpenFileDialog openFileDialog = new OpenFileDialog();
-        //    if (openFileDialog.ShowDialog() != DialogResult.Cancel)
-        //    {
-        //        using (var form = new Enc())
-        //        {
-        //            var result = form.ShowDialog();
-        //            if (result == DialogResult.OK)
-        //            {
-        //                int t = 0;
-        //                string[] buffer = new string[8];
-        //                for (int i = 0; i <= form.passwd.Length - 1; i++)
-        //                {
-        //                    if (!string.IsNullOrWhiteSpace(form.passwd[i]))
-        //                    {
-        //                        buffer[i] = form.passwd[i];
-        //                        t++;
-        //                    }
-        //                }
-
-        //                passs = new string[t];
-
-        //                for (int i = 0; i < t; i++)
-        //                {
-        //                    passs[i] = buffer[i];
-        //                }
-        //                AES_Encrypt(openFileDialog.FileName);
-        //            }
-        //        }
-        //    }
-        //    passs = null;
-        //}
-
-        //private void decrypt_Click(object sender, EventArgs e)
-        //{
-        //    OpenFileDialog openFileDialog = new OpenFileDialog();
-        //    openFileDialog.Filter = "AES files (*.aes)|*.aes|All files (*.*)|*.*";
-        //    if (openFileDialog.ShowDialog() != DialogResult.Cancel)
-        //    {
-        //        using (var form = new Dec())
-        //        {
-        //            var result = form.ShowDialog();
-        //            if (result == DialogResult.OK)
-        //            {
-        //                AES_Decrypt(openFileDialog.FileName, form.passwd);
-        //            }
-        //        }
-        //    }
-        //    passs = null;
-        //}
     }
 }
